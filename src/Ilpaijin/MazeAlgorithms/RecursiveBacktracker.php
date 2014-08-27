@@ -2,7 +2,6 @@
 
 namespace Ilpaijin\MazeAlgorithms;
 
-use Ilpaijin\BaseMaze;
 use \SplStack;
 
 /**

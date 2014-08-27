@@ -1,6 +1,9 @@
 <?php
 
-namespace Ilpaijin;
+namespace Ilpaijin\MazeAlgorithms;
+
+use Ilpaijin\TreeManager;
+use Ilpaijin\Cell;
 
 /**
 * BaseMaze Description
@@ -31,6 +34,13 @@ abstract class BaseMaze
         $this->size = $size;
         $this->treeManager = new TreeManager();
     }
+
+    /**
+     * [move description]
+     * @param  [type] $node [description]
+     * @return [type]       [description]
+     */
+    abstract function move($node);
 
     /**
      * [generateMaze description]

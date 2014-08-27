@@ -2,8 +2,6 @@
 
 namespace Ilpaijin\MazeAlgorithms;
 
-use Ilpaijin\BaseMaze;
-
 /**
 * AldousBroder Description
 *
