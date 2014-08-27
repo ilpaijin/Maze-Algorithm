@@ -9,8 +9,8 @@ $grid = array_pad([], $size, array_pad([], $size, 0));
 
 $start = microtime(true);
 
-// $maze = new Ilpaijin\MazeAlgorithms\AldousBroder($size);
-$maze = new Ilpaijin\MazeAlgorithms\RecursiveBacktracker($size);
+$maze = new Ilpaijin\MazeAlgorithms\AldousBroder($size);
+// $maze = new Ilpaijin\MazeAlgorithms\RecursiveBacktracker($size);
 
 $maze->generate();
 
@@ -18,12 +18,12 @@ var_dump(microtime(true) - $start);
 
 if(isset($maze->stack))
 {
-    $maze->stack->rewind();
-    while($maze->stack->valid())
-    {
-        // var_dump($maze->stack->current()); 
-        $maze->stack->next();
-    }
+    // $maze->stack->rewind();
+    // while($maze->stack->valid())
+    // {
+    //     // var_dump($maze->stack->current()); 
+    //     $maze->stack->next();
+    // }
 
     // var_dump($maze->treeManager->tree);
 }

@@ -56,9 +56,8 @@ abstract class BaseMaze
 
         while(!$this->isGenerationComplete())
         {   
-            var_dump("current {$current->getId()}");
             $next = $this->move($current);
-            var_dump("next {$next}");
+            
             if($next)
             {
                 if($this->gotoNode($next,$current))
