@@ -45,13 +45,16 @@ abstract class BaseMaze
         $current = $first;
 
         while(!$this->isGenerationComplete())
-        {
+        {   
+            var_dump("current {$current->getId()}");
             $next = $this->move($current);
-            
+            var_dump("next {$next}");
             if($next)
             {
-                $this->gotoNode($next,$current);
-                $current = $this->treeManager[$next];
+                if($this->gotoNode($next,$current))
+                {
+                    $current = $this->treeManager[$next];
+                }
             }
         }
     }
@@ -60,7 +63,7 @@ abstract class BaseMaze
     {
         if ($this->isVisited($node))
         {
-            return;
+            return false;
         }
 
         $node = $this->treeManager[$node];
@@ -73,6 +76,8 @@ abstract class BaseMaze
         $parent->addChild($node);
 
         $this->setVisited($node);
+
+        return true;
     }
 
     /**
@@ -131,7 +136,7 @@ abstract class BaseMaze
     {
         if(isset($this->treeManager[$nodeId]))
         {
-            $this->treeManager[$nodeId]->isVisited();
+            return $this->treeManager[$nodeId]->isVisited() ?: false;
         } 
         else 
         {

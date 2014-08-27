@@ -81,7 +81,7 @@ class Cell
      */
     public function hasParent()
     {
-        return is_null($this->meta['parent']);
+        return !is_null($this->meta['parent']);
     }
 
     /**

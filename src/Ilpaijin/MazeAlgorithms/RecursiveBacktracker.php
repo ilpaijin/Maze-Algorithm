@@ -2,6 +2,7 @@
 
 namespace Ilpaijin\MazeAlgorithms;
 
+use Ilpaijin\BaseMaze;
 use \SplStack;
 
 /**
@@ -9,7 +10,7 @@ use \SplStack;
 *
 * @author ilpaijin <ilpaijin@gmail.com>
 */
-class RecursiveBacktracker 
+class RecursiveBacktracker extends BaseMaze
 {
     /**
      * [$stack description]
@@ -28,21 +29,25 @@ class RecursiveBacktracker
         parent::__construct($size);
     }
 
-    //////////// NOT WORKING YET ///////////
+    /**
+     * [move description]
+     * @param  [type] $node [description]
+     * @return [type]       [description]
+     */
     public function move($node)
     {
-        //but not visited choices
-        $choices = $this->possibleChoices($node->getId());
-
-        return $choices[rand(0, (count($choices) - 1))];
+        $choices = array_values(array_filter($this->possibleChoices($node->getId()), function($n)
+        {
+            return !$this->isVisited($n);
+        }));
 
         if($choices)
         {
-            $this->stack->append($node);
+            $this->stack->push($node);
 
-            return $choice, $node;
+            return $choices[rand(0, (count($choices) - 1))];
         }
 
-        return $this->move($this->stack->pop())
+        return $this->move($this->stack->pop());
     }
 }
